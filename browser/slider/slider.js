@@ -12,12 +12,11 @@
     ];
 
     let i = 0;
-
     img.src = src[i];
 
     setInterval(() => {
-        img.src = src[i];
         i = i >= src.length - 1 ? 0 : ++i;
+        img.src = src[i];
     }, 5000);
 
 })();
