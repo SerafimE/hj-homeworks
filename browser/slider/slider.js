@@ -18,5 +18,4 @@
         i = i >= src.length - 1 ? 0 : ++i;
         img.src = src[i];
     }, 5000);
-
 })();
