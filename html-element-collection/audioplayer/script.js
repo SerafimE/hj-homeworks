@@ -1,6 +1,6 @@
 'use strict';
 
-const player = document.getElementsByClassName('audio-player')[0];
+const player = document.getElementsByTagName('audio')[0];
 const Title = document.getElementsByClassName('title')[0];
 const src = [
     'LA Chill Tour',
