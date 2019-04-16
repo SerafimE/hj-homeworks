@@ -9,18 +9,16 @@ function reqListener() {
     content.innerHTML = this.responseText;
 }
 
-xhr.onload = reqListener;
-xhr.open("get", tabs[0].href);
-xhr.send();
-
 for (let tab of tabs) {
     tab.addEventListener('click', changeTab);
 }
 
-function changeTab(event) {
+tabs[0].click();
+
+function changeTab() {
     event.preventDefault();
-    for (let i of tabs) {
-        i.classList.remove('active');
+    for (let tab of tabs) {
+        tab.classList.remove('active');
         event.target.classList.add('active');
     }
 
