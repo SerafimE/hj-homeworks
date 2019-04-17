@@ -7,11 +7,11 @@ const increment = document.querySelector('#increment'),
 let localStorageCounter = localStorage.getItem('counter');
 counter.textContent = localStorageCounter;
 
-increment.addEventListener('click', event => count());
-decrement.addEventListener('click', event => count());
-reset.addEventListener('click', event => count());
+increment.addEventListener('click', count);
+decrement.addEventListener('click', count);
+reset.addEventListener('click', count);
 
-function count() {
+function count(event) {
     if (event.target === increment) {
         ++localStorageCounter;
     } else if (event.target === decrement) {
