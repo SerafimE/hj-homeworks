@@ -1,5 +1,6 @@
 'use strict';
 
+const todoList = document.querySelector('.list-block');
 const check = document.querySelectorAll('input');
 const counter = document.querySelector('output');
 let count = 0;
@@ -16,5 +17,11 @@ function checkChecked(event) {
         counter.value = `${++count} из ${total}`;
     } else if (event.target.checked === false) {
         counter.value = `${--count} из ${total}`;
+    }
+
+    if (count === total) {
+        todoList.classList.add('complete');
+    } else {
+        todoList.classList.remove('complete');
     }
 }
