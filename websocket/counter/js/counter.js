@@ -10,4 +10,7 @@ connect.addEventListener('message', event => {
     output.value = JSON.parse(event.data).errors;
 });
 
-window.addEventListener('beforeunload', event => connect.close(1000));
+window.addEventListener('beforeunload', () => {
+    connect.onclose = function () {};
+    connect.close(1000);
+});
