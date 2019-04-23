@@ -1,42 +1,42 @@
 'use strict';
 
-const inputCollection = document.querySelectorAll('input, textarea');
-const form = document.querySelector('.contentform');
-const message = document.querySelector('#output');
-const buttonSend = document.querySelectorAll('.button-contact')[0];
-const buttonCheck = document.querySelectorAll('.button-contact')[1];
-let count = 0;
+window.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('.contentform');
+    const output = document.querySelector('#output');
+    const sendBtn = form.querySelector('.button-contact');
+    const editBtn = output.querySelector('.button-contact');
+    const inputList = Array.from(form.querySelectorAll('input'));
+    inputList.push(form.querySelector('textarea'));
 
-for (let t of inputCollection) {
-    if (t.name === 'zip') {
-        t.addEventListener('input', event => {
-            t.value = t.value.replace(/\D/, '');
-        });
+    sendBtn.addEventListener('click', toggleBtns);
+    editBtn.addEventListener('click', toggleBtns);
+
+    for (const input of inputList) {
+        input.addEventListener('input', checkField);
+        input.addEventListener('change', checkForm);
     }
 
-    t.addEventListener('input', event => {
-        if (t.value === '') {
-            buttonSend.disabled = true;
-            --count;
+    function checkForm() {
+        for (const item of inputList) {
+            if (!item.value) {
+                sendBtn.setAttribute('disabled', true);
+                return;
+            }
+            sendBtn.removeAttribute('disabled', true);
         }
-    });
-    t.addEventListener('change', event => {
-        if (t.value !== '') {
-            ++count;
-        }
-        if (count === inputCollection.length) {
-            buttonSend.disabled = false;
-            buttonSend.type = 'button';
-        }
-    });
-}
+    }
 
-buttonSend.addEventListener('click', event => {
-    form.classList.add('hidden');
-    message.classList.remove('hidden');
-});
+    function checkField() {
+        if (this.name === 'zip') {
+            this.value = this.value.replace(/\D/, '');
+        }
+        document.getElementById(this.name).value = this.value;
+    }
 
-buttonCheck.addEventListener('click', event => {
-    form.classList.remove('hidden');
-    message.classList.add('hidden');
+    function toggleBtns(event) {
+        event.preventDefault();
+        form.classList.toggle('hidden');
+        output.classList.toggle('hidden');
+    }
+
 });
