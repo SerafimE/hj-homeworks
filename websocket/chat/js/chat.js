@@ -38,9 +38,6 @@ connection.addEventListener('message', event => {
         messagesContent.appendChild(clone(messageReceived, event.data, showTime()));
         messagesContent.style.top = (messagesContent.clientHeight - messagesContent.scrollHeight) + 'px';
     }
-    if (event.data === 'Удачи') {
-        connection.close();
-    }
 });
 
 connection.addEventListener('close', () => {
