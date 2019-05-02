@@ -1,10 +1,10 @@
 'use strict';
 
-const colorSwatch = document.querySelector('#colorSwatch');
-const sizeSwatch = document.querySelector('#sizeSwatch');
-const quickCart = document.querySelector('#quick-cart');
-const addToCartBtn = document.getElementById('AddToCart');
-const addToCartForm = document.getElementById('AddToCartForm');
+const colorSwatch = document.querySelector('#colorSwatch'),
+    sizeSwatch = document.querySelector('#sizeSwatch'),
+    quickCart = document.querySelector('#quick-cart'),
+    addToCartBtn = document.getElementById('AddToCart'),
+    addToCartForm = document.getElementById('AddToCartForm');
 
 
 getSize();
