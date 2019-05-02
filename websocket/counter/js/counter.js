@@ -2,8 +2,8 @@
 
 const connect = new WebSocket('wss://neto-api.herokuapp.com/counter');
 
-const counter = document.querySelector('.counter');
-const output = document.querySelector('output.errors');
+const counter = document.querySelector('.counter'),
+    output = document.querySelector('output.errors');
 
 connect.addEventListener('message', event => {
     counter.textContent = JSON.parse(event.data).connections;
@@ -11,6 +11,7 @@ connect.addEventListener('message', event => {
 });
 
 window.addEventListener('beforeunload', () => {
-    connect.onclose = function () {};
+    connect.onclose = function () {
+    };
     connect.close(1000);
 });
