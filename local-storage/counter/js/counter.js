@@ -1,4 +1,5 @@
 'use strict';
+
 const increment = document.querySelector('#increment'),
     decrement = document.querySelector('#decrement'),
     reset = document.querySelector('#reset'),
