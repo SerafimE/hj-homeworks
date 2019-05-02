@@ -1,21 +1,20 @@
 'use strict';
 const chat = document.querySelector('.chat');
 
-const chatTitle = chat.querySelector('.chat-title');
-const user = chatTitle.querySelector('h1');
-const chatStatus = chatTitle.querySelector('.chat-status');
+const chatTitle = chat.querySelector('.chat-title'),
+    user = chatTitle.querySelector('h1'),
+    chatStatus = chatTitle.querySelector('.chat-status');
 
-const messagesTemplates = chat.querySelector('.messages-templates');
-const messageLoading = messagesTemplates.querySelector('.loading');
-const messageReceived = messageLoading.nextElementSibling;
-const messageSent = messagesTemplates.querySelector('.message-personal');
-const messageStatus = messagesTemplates.querySelector('.message-status');
+const messagesTemplates = chat.querySelector('.messages-templates'),
+    messageLoading = messagesTemplates.querySelector('.loading'),
+    messageReceived = messageLoading.nextElementSibling,
+    messageSent = messagesTemplates.querySelector('.message-personal'),
+    messageStatus = messagesTemplates.querySelector('.message-status');
 
-const messagesContent = chat.querySelector('.messages-content');
-
-const messageBox = chat.querySelector('.message-box');
-const messageInput = messageBox.querySelector('.message-input');
-const messageSubmitBtn = messageBox.querySelector('button.message-submit');
+const messagesContent = chat.querySelector('.messages-content'),
+    messageBox = chat.querySelector('.message-box'),
+    messageInput = messageBox.querySelector('.message-input'),
+    messageSubmitBtn = messageBox.querySelector('button.message-submit');
 
 const connection = new WebSocket('wss://neto-api.herokuapp.com/chat');
 
@@ -37,6 +36,9 @@ connection.addEventListener('message', event => {
         }
         messagesContent.appendChild(clone(messageReceived, event.data, showTime()));
         messagesContent.style.top = (messagesContent.clientHeight - messagesContent.scrollHeight) + 'px';
+    }
+    if (event.data === 'Удачи') {
+        connection.close();
     }
 });
 
